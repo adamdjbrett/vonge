@@ -1,0 +1,52 @@
+<header class="c-header">
+  <div class="container">
+    <div class="row">
+      <div class="c-header__inner">
+        <div class="logo">
+          <a class="logo__link" href="/">
+            {% if site.logoImage %}
+            <img class="logo__image" src="{{ site.logoImage }}" alt="{{ site.title }}">
+            {% else %}
+            {{ site.title }}
+            {% endif %}
+          </a>
+        </div>
+
+        {% if site.navigation and site.navigation.length %}
+        <nav class="main-nav">
+          <div class="main-nav__box">
+            <div class="nav__icon-close">
+              <i class="ion ion-md-close"></i>
+            </div>
+            <div class="nav__title">Menu</div>
+
+            <ul class="nav__list list-reset">
+              {% for item in site.navigation %}
+                {% if item.submenu %}
+                <li class="nav__item dropdown">
+                  <span class="nav__link dropdown-toggle">{{ item.title }} <i class="ion ion-ios-arrow-down arrow-down"></i></span>
+                  <div class="dropdown-menu">
+                    {% for subitem in item.submenu %}
+                    <a href="{{ subitem.url }}" class="nav__link{% if page.url == subitem.url %} active-link{% endif %}">{{ subitem.title }}</a>
+                    {% endfor %}
+                  </div>
+                </li>
+                {% else %}
+                <li class="nav__item">
+                  <a href="{{ item.url }}" class="nav__link{% if page.url == item.url %} active-link{% endif %}">{{ item.title }}</a>
+                </li>
+                {% endif %}
+              {% endfor %}
+            </ul>
+          </div>
+          {% include "partials/social-link.njk" %}
+        </nav>
+
+        <div class="nav-button">
+          <i class="nav__icon nav__icon-menu ion ion-md-menu"></i>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</header>

@@ -1,0 +1,23 @@
+<footer class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col col-12">
+        {% include "partials/social-link.njk" %}
+
+        <ul class="footer_nav list-reset">
+          {% for item in site.footer.menu %}
+          <li class="footer_nav__item">
+            <a href="{{ item.url }}" class="footer_nav__link">{{ item.title }}</a>
+          </li>
+          {% endfor %}
+        </ul>
+
+        {% if site.footer.copyright %}
+        <div class="copyright">{{ site.footer.copyright | safe }}</div>
+        {% else %}
+        <div class="copyright">&copy; {{ "now" | currentYear }} <a href="/">{{ site.author }}</a></div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</footer>

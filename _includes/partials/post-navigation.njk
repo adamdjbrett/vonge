@@ -1,0 +1,31 @@
+{% if lower or higher %}
+<div class="post__navigation animate">
+  {% if lower %}
+  <a class="post__prev" href="{{ lower.url }}">
+    {% if lower.data.image %}
+    <div class="prev__image">
+      <img loading="lazy" src="{{ lower.data.image }}" alt="{{ lower.data.title }}">
+    </div>
+    {% endif %}
+    <div class="prev__box">
+      <span class="post__nav post__nav__prev">Prev post</span>
+      <h2 class="post__nav__title">{{ lower.data.title }}</h2>
+    </div>
+  </a>
+  {% endif %}
+
+  {% if higher %}
+  <a class="post__next" href="{{ higher.url }}">
+    <div class="next__box">
+      <span class="post__nav post__nav__next">Next post</span>
+      <h2 class="post__nav__title">{{ higher.data.title }}</h2>
+    </div>
+    {% if higher.data.image %}
+    <div class="next__image">
+      <img loading="lazy" src="{{ higher.data.image }}" alt="{{ higher.data.title }}">
+    </div>
+    {% endif %}
+  </a>
+  {% endif %}
+</div>
+{% endif %}

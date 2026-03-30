@@ -1,0 +1,29 @@
+---
+layout: layouts/base.njk
+---
+{% from "components.njk" import pageHeading, newsletter %}
+<div class="container">
+  {{ pageHeading(title, description) }}
+
+  {% if image %}
+  <div class="c-page-image animate">
+    <img loading="lazy" src="{{ image }}" alt="{{ title }}">
+  </div>
+  {% endif %}
+
+  <div class="page animate">
+    {{ content | safe }}
+  </div>
+
+  {% if higher %}
+  <div class="project__navigation">
+    <a class="project__prev" href="{{ higher.url }}">
+      <div class="project__box">
+        <span class="project__nav__info">Next Project</span>
+        <h2 class="project__nav__title">{{ higher.data.title }}<i class="ion ion-md-arrow-round-forward arrow-right"></i></h2>
+      </div>
+    </a>
+  </div>
+  {% endif %}
+</div>
+{{ newsletter(site.newsletter) }}

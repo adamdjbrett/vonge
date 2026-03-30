@@ -1,0 +1,17 @@
+---
+layout: layouts/base.njk
+title: Projects
+permalink: /projects/index.html
+---
+{% from "components.njk" import pageHeading, projectCard, newsletter %}
+{{ pageHeading("My works", "I show only my best works built completely with passion, simplicity, and creativity!") }}
+
+<div class="container animate">
+  <div class="row">
+    {% for project in collections.projects %}
+      {{ projectCard(project) }}
+    {% endfor %}
+  </div>
+</div>
+
+{{ newsletter(site.newsletter) }}

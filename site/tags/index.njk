@@ -1,0 +1,25 @@
+---
+layout: layouts/base.njk
+title: Tags
+permalink: /tags/index.html
+---
+{% from "components.njk" import pageHeading, newsletter %}
+{{ pageHeading("Tags") }}
+
+<div class="container">
+  <div class="row">
+    <div class="col col-12">
+      <div class="contaniner__inner animate">
+        <div class="row">
+          <div class="c-blog-card__tags-box">
+            {% for tag in collections.tagList %}
+            <a href="/tags/{{ tag | slugify }}/" class="c-blog-card__tag">{{ tag }}</a>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{{ newsletter(site.newsletter) }}

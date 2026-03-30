@@ -1,0 +1,28 @@
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="index, follow">
+<title>{% if title %}{{ title }}{% else %}{{ site.title }}{% endif %}</title>
+<meta name="keywords" content="{{ (keywords or site.keywords) | join(', ') }}">
+<meta name="description" content="{{ description or site.description }}">
+<meta property="og:description" content="{{ description or site.description }}" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="{% if title %}{{ title }}{% else %}{{ site.title }}{% endif %}">
+<meta property="og:image" content="{{ image or site.socialMediaShareImage }}">
+<meta name="twitter:image" content="{{ image or site.socialMediaShareImage }}">
+{% if site.twitterHandle %}
+<meta name="twitter:creator" content="{{ site.twitterHandle }}" />
+{% endif %}
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{% if title %}{{ title }}{% else %}{{ site.title }}{% endif %}">
+<meta name="twitter:description" content="{{ description or site.description }}">
+<link rel="canonical" href="{{ page.url | absoluteUrl(site.url) }}">
+<meta name="author" content="{{ author or site.author }}">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+<link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
+<link rel="stylesheet" href="/css/global.css">
+<link rel="stylesheet" href="/css/tag.css">
+
+<link rel="icon" href="/favicon.ico">
+<link rel="alternate" type="application/atom+xml" title="Atom" href="/feed/feed.xml">

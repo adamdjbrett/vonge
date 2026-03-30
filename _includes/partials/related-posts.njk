@@ -1,0 +1,18 @@
+{% if tags and tags.length %}
+<div class="container">
+  <section class="related-posts animate">
+    <div class="row">
+      <div class="col col-12">
+        <div class="container__inner">
+          <div class="section__info">
+            <div class="section__head">
+              <h2 class="section__title">You may also like</h2>
+              <a href="/tags/{{ tags[0] | slugify }}/" class="section__link related-tag">See all<span> {{ tags[0] }}</span> <i class="ion ion-md-arrow-forward"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+{% endif %}

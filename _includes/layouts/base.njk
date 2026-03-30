@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="{{ site.language }}" dir="{{ site.languageDirection }}">
+<head>
+  {% include "partials/head.njk" %}
+</head>
+<body>
+  {% include "partials/google-analytics.njk" %}
+  {% include "partials/header.njk" %}
+
+  <main class="main">
+    {{ content | safe }}
+  </main>
+
+  <div class="top" title="Top"><i class="ion ion-ios-arrow-up"></i></div>
+
+  {% include "partials/footer.njk" %}
+
+  <script src="/js/scripts.js"></script>
+  <script src="/js/common.js"></script>
+</body>
+</html>

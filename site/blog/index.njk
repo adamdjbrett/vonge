@@ -1,0 +1,21 @@
+---
+layout: layouts/base.njk
+title: Blog
+pagination:
+  data: collections.posts
+  size: 6
+  alias: postsPage
+permalink: "/posts/{% if pagination.pageNumber > 0 %}page/{{ pagination.pageNumber + 1 }}/{% endif %}index.html"
+---
+{% from "components.njk" import pageHeading, blogCard, pagination %}
+{{ pageHeading("Blog", "Vonge blog features productivity, tips, inspiration and strategies for massive profits.") }}
+
+<div class="container animate">
+  <div class="row" data-pagebreak="6">
+    {% for post in postsPage %}
+      {{ blogCard(post) }}
+    {% endfor %}
+  </div>
+</div>
+
+{{ pagination(pagination) }}

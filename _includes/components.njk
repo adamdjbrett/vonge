@@ -1,0 +1,140 @@
+{% macro pageHeading(title, description='') %}
+<div class="container">
+  <div class="c-page-heading">
+    <h1 class="c-page-heading__title">{{ title }}</h1>
+    {% if description %}<p class="c-page-heading__description">{{ description }}</p>{% endif %}
+  </div>
+</div>
+{% endmacro %}
+
+{% macro blogCard(post) %}
+{% set c = 'c-blog-card' %}
+<div class="{{c}} col col-4 col-d-6 col-t-12">
+  <div class="{{c}}__inner">
+    {% if post.data.image %}
+    <div class="{{c}}__image-wrap">
+      <a class="{{c}}__image" href="{{ post.url }}">
+        <img loading="lazy" src="{{ post.data.image }}" alt="{{ post.data.title }}">
+      </a>
+    </div>
+    {% endif %}
+
+    <div class="{{c}}__content">
+      {% if post.data.tags and post.data.tags.length %}
+      <div class="{{c}}__tags-box">
+        {% for tag in post.data.tags %}
+        {% if tag != "posts" and tag != "all" %}
+        <a href="/tags/{{ tag | slugify }}/" class="{{c}}__tag">{{ tag }}</a>
+        {% endif %}
+        {% endfor %}
+      </div>
+      {% endif %}
+
+      <h2 class="{{c}}__title"><a href="{{ post.url }}">{{ post.data.title }}</a></h2>
+
+      {% if post.data.description %}
+      <p class="{{c}}__excerpt">{{ post.data.description }}</p>
+      {% endif %}
+
+      <div class="{{c}}__meta">
+        <div class="{{c}}__author-image">
+          <img loading="lazy" src="{{ post.data.author_image or site.authorImage }}" alt="{{ post.data.author or site.author }}">
+        </div>
+        <div class="{{c}}__info">
+          <div class="{{c}}__author-name">{{ post.data.author or site.author }}</div>
+          <span class="{{c}}__date"><time datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate(site.dateFormat) }}</time></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endmacro %}
+
+{% macro projectCard(project) %}
+{% set c = 'c-project-card' %}
+<article class="{{c}} col col-4 col-d-6 col-t-12">
+  <div class="{{c}}__content">
+    <a href="{{ project.url }}" class="{{c}}__image">
+      <img loading="lazy" src="{{ project.data.image }}" alt="{{ project.data.title }}">
+    </a>
+    <div class="{{c}}__info">
+      <div class="{{c}}__info-wrap">
+        <h3 class="{{c}}__title">{{ project.data.title }}</h3>
+      </div>
+      <div class="{{c}}__info-wrap">
+        {% if project.data.subtitle %}<div class="{{c}}__subtitle">{{ project.data.subtitle }}</div>{% endif %}
+      </div>
+    </div>
+  </div>
+</article>
+{% endmacro %}
+
+{% macro testimonialCard(t) %}
+{% set c = 'c-testimonial-card' %}
+<div class="{{c}}">
+  <div class="{{c}}__content">
+    <div class="{{c}}__client-meta">
+      {% if t.image %}
+      <div class="{{c}}__image-container">
+        <img class="{{c}}__client-avatar" src="{{ t.image }}" alt="{{ t.name }}">
+      </div>
+      {% endif %}
+      <div class="{{c}}__client-info">
+        {% if t.name %}<h3 class="{{c}}__client-name">{{ t.name }}</h3>{% endif %}
+        {% if t.position %}<p class="{{c}}__client-position">{{ t.position }}</p>{% endif %}
+      </div>
+    </div>
+    {% if t.blurb %}<p class="{{c}}__client-text">{{ t.blurb }}</p>{% endif %}
+  </div>
+</div>
+{% endmacro %}
+
+{% macro newsletter(config) %}
+{% set c = 'c-subscribe' %}
+<section class="{{c}} section">
+  <div class="container">
+    <div class="row">
+      <div class="col col-12">
+        <div class="{{c}}__inner">
+          <div class="{{c}}__info">
+            <h3 class="{{c}}__title">{{ config.newsletter_title }}</h3>
+            <div class="{{c}}__subtitle"><span id="ityped"></span></div>
+          </div>
+          <form class="{{c}}__form validate" action="//{{ config.newsletter_identifier }}" method="POST" target="_blank" novalidate>
+            <label class="screen-reader-text" for="mce-EMAIL">Email address</label>
+            <input class="{{c}}__form-email required email" id="mce-EMAIL" type="text" name="EMAIL" placeholder="Your email address">
+            <button class="c-button c-button--primary c-button--large" type="submit">{{ config.newsletter_button }}</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<script>var itype_text = ['{{ config.newsletter_description }}'];</script>
+{% endmacro %}
+
+{% macro pagination(paginationObj) %}
+{% if paginationObj and paginationObj.pages and paginationObj.pages.length > 1 %}
+<nav class="pagination">
+  <div class="container">
+    <div class="pagination__inner">
+      <div class="pagination__list">
+        {% if paginationObj.href.previous %}
+        <a href="{{ paginationObj.href.previous }}" class="pagination__prev"><i class='ion ion-ios-arrow-back'></i> Prev</a>
+        {% else %}
+        <span class="pagination__prev disabled">Prev</span>
+        {% endif %}
+
+        <div class="pagination__count">Page <span>{{ paginationObj.pageNumber + 1 }}</span> of <span>{{ paginationObj.pages.length }}</span></div>
+
+        {% if paginationObj.href.next %}
+        <a href="{{ paginationObj.href.next }}" class="pagination__next">Next<i class="ion ion-ios-arrow-forward"></i></a>
+        {% else %}
+        <span class="pagination__next disabled">Next</span>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</nav>
+{% endif %}
+{% endmacro %}
