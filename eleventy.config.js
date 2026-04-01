@@ -52,21 +52,21 @@ export default function(eleventyConfig) {
 
   eleventyConfig.addCollection("posts", (collectionApi) =>
     collectionApi
-      .getFilteredByGlob("site/posts/*.{md,njk,html}")
+      .getFilteredByGlob("content/blog/*.md")
       .filter((item) => item.data.draft !== true)
       .sort((a, b) => b.date - a.date)
   );
 
   eleventyConfig.addCollection("projects", (collectionApi) =>
     collectionApi
-      .getFilteredByGlob("site/projects/*.md")
+      .getFilteredByGlob("content/projects/*.md")
       .filter((item) => item.data.draft !== true)
       .sort((a, b) => b.date - a.date)
   );
 
   eleventyConfig.addCollection("tagList", (collectionApi) => {
     const tags = new Set();
-    for (const item of collectionApi.getFilteredByGlob("site/posts/*.{md,njk,html}")) {
+    for (const item of collectionApi.getFilteredByGlob("content/blog/*.md")) {
       for (const tag of item.data.tags || []) {
         if (["all", "posts"].includes(tag)) continue;
         tags.add(tag);
@@ -80,6 +80,6 @@ export default function(eleventyConfig) {
     htmlTemplateEngine: "njk",
     dataTemplateEngine: "njk",
     templateFormats: ["md", "njk", "html", "11ty.js"],
-    dir: { input: "site", includes: "../_includes", data: "../_data", output: "_site" }
+    dir: { input: "content", includes: "../_includes", data: "../_data", output: "_site" }
   };
 }

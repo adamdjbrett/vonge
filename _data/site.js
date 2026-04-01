@@ -4,7 +4,7 @@ const productionUrl = process.env.SITE_URL || "https://example.com";
 export default {
   title: "Vonge",
   author: "Vanessa Marley",
-  description: "Vonge is a portfolio site template for Zola",
+  description: "Vonge is a portfolio site template for Eleventy",
   language: "en",
   languageDirection: "auto",
   dateFormat: "dd LLL yyyy",
