@@ -1,7 +1,9 @@
-# Vonge Zola Theme
+# Vonge Zola Port
 ![](screenshot.png)
 
-This is a Zola port of the [Vonge Hugo Bookshop template](https://github.com/CloudCannon/vonge-hugo-bookshop-template), originally created by [CloudCannon](https://cloudcannon.com/) and licensed under the MIT License.
+This repository is an unofficial **Zola port** of the original [Vonge Hugo Bookshop template](https://github.com/CloudCannon/vonge-hugo-bookshop-template) by [CloudCannon](https://cloudcannon.com/).
+
+All original design and template credit belongs to CloudCannon. This project adapts that work for Zola.
 
 Vonge is a clean, modern theme for personal portfolios, blogs, or landing pages. This Zola version is designed to be **fully configurable via `config.toml` and through structured front matter blocks** and **does not rely on Bookshop**.
 
@@ -71,7 +73,11 @@ For a full reference of all configuration options, content blocks, and page vari
 
 ## 🙏 Acknowledgements
 
-This theme is based on the original [Vonge Hugo Bookshop template](https://github.com/CloudCannon/vonge-hugo-bookshop-template) by [CloudCannon](https://cloudcannon.com/), adapted for use with Zola. All original design credits go to the authors.
+This theme is based on the original [Vonge Hugo Bookshop template](https://github.com/CloudCannon/vonge-hugo-bookshop-template) by [CloudCannon](https://cloudcannon.com/), adapted for use with Zola.
+
+## 📄 License
+
+This repository uses the original upstream MIT License from CloudCannon. See [LICENSE](LICENSE).
 
 ## 📄 Contributing
 
